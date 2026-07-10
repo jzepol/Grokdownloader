@@ -1,0 +1,562 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   Grok Imagine Downloader — UI dark premium
+   Iconos: SVG inline en content.js (sin CDN — CWS friendly)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  --gid-bg: #0f0f14;
+  --gid-surface: #16161d;
+  --gid-surface-2: #1c1c26;
+  --gid-border: #2a2a35;
+  --gid-text: #f4f4f5;
+  --gid-muted: #a1a1aa;
+  --gid-faint: #71717a;
+  --gid-accent: #8b5cf6;
+  --gid-accent-2: #6366f1;
+  --gid-accent-hover: #7c3aed;
+  --gid-success: #4ade80;
+  --gid-danger: #f87171;
+  --gid-warn: #fbbf24;
+  --gid-radius: 14px;
+  --gid-shadow: 0 16px 48px rgba(0, 0, 0, 0.55);
+  --gid-font: "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+/* ─── Toggle flotante ─────────────────────────────────────────────────────── */
+
+#gid-toggle-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 2147483000;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--gid-accent), var(--gid-accent-2));
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 11px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--gid-font);
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.45);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+#gid-toggle-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.55);
+}
+#gid-toggle-btn .gid-badge-pro {
+  background: rgba(255, 255, 255, 0.2);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+/* ─── Panel ───────────────────────────────────────────────────────────────── */
+
+#gid-panel {
+  position: fixed;
+  bottom: 72px;
+  right: 20px;
+  width: 380px;
+  max-height: 72vh;
+  background: var(--gid-surface);
+  color: var(--gid-text);
+  border: 1px solid var(--gid-border);
+  border-radius: var(--gid-radius);
+  box-shadow: var(--gid-shadow);
+  z-index: 2147483000;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--gid-font);
+  font-size: 13px;
+  overflow: hidden;
+  backdrop-filter: blur(8px);
+}
+#gid-panel.gid-hidden {
+  display: none;
+}
+
+.gid-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 14px;
+  background: linear-gradient(180deg, #12121a 0%, var(--gid-surface) 100%);
+  border-bottom: 1px solid var(--gid-border);
+}
+.gid-header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 650;
+  font-size: 13.5px;
+  letter-spacing: -0.01em;
+}
+.gid-header-left svg {
+  flex-shrink: 0;
+  color: var(--gid-accent);
+}
+.gid-pro-chip {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  background: linear-gradient(135deg, var(--gid-accent), var(--gid-accent-2));
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.gid-header button {
+  background: transparent;
+  border: none;
+  color: var(--gid-muted);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 6px;
+  display: inline-flex;
+  line-height: 0;
+}
+.gid-header button:hover {
+  background: var(--gid-surface-2);
+  color: var(--gid-text);
+}
+
+/* ─── Quota bar ───────────────────────────────────────────────────────────── */
+
+.gid-quota {
+  display: flex;
+  gap: 8px;
+  padding: 10px 12px 0;
+}
+.gid-quota-pill {
+  flex: 1;
+  background: var(--gid-bg);
+  border: 1px solid var(--gid-border);
+  border-radius: 10px;
+  padding: 8px 10px;
+  font-size: 11px;
+  color: var(--gid-muted);
+}
+.gid-quota-pill strong {
+  display: block;
+  color: var(--gid-text);
+  font-size: 13px;
+  margin-top: 2px;
+  font-variant-numeric: tabular-nums;
+}
+.gid-quota-pill.is-empty strong {
+  color: var(--gid-warn);
+}
+.gid-quota-pill.is-pro strong {
+  color: var(--gid-success);
+}
+
+/* ─── Actions ─────────────────────────────────────────────────────────────── */
+
+.gid-actions {
+  display: flex;
+  gap: 6px;
+  padding: 10px 12px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--gid-border);
+}
+.gid-actions button {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  background: var(--gid-surface-2);
+  color: var(--gid-text);
+  border: 1px solid var(--gid-border);
+  border-radius: 8px;
+  padding: 7px 8px;
+  cursor: pointer;
+  font-size: 12px;
+  font-family: var(--gid-font);
+  font-weight: 500;
+  transition: background 0.12s ease, border-color 0.12s ease;
+}
+.gid-actions button:hover {
+  background: #252532;
+  border-color: #3f3f50;
+}
+.gid-actions button.gid-primary {
+  background: linear-gradient(135deg, var(--gid-accent), var(--gid-accent-2));
+  border-color: transparent;
+  flex-basis: 100%;
+  font-weight: 600;
+  color: #fff;
+}
+.gid-actions button.gid-primary:hover {
+  filter: brightness(1.08);
+}
+.gid-actions button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ─── Progress ────────────────────────────────────────────────────────────── */
+
+.gid-progress-wrap {
+  padding: 0 12px 8px;
+  display: none;
+}
+.gid-progress-wrap.gid-visible {
+  display: block;
+}
+.gid-progress-track {
+  height: 6px;
+  background: var(--gid-bg);
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid var(--gid-border);
+}
+.gid-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gid-accent), var(--gid-accent-2));
+  border-radius: 999px;
+  transition: width 0.25s ease;
+}
+#gid-status {
+  padding: 4px 12px 8px;
+  color: var(--gid-muted);
+  font-size: 12px;
+  min-height: 18px;
+}
+#gid-status.gid-error {
+  color: var(--gid-danger);
+}
+#gid-status.gid-success {
+  color: var(--gid-success);
+}
+
+/* ─── List ────────────────────────────────────────────────────────────────── */
+
+#gid-list {
+  overflow-y: auto;
+  padding: 4px 8px 10px;
+  flex: 1;
+  min-height: 80px;
+}
+.gid-list-empty {
+  text-align: center;
+  color: var(--gid-faint);
+  padding: 24px 12px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.gid-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 6px;
+  border-bottom: 1px solid #22222c;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.1s ease;
+}
+.gid-row:hover {
+  background: var(--gid-surface-2);
+}
+.gid-row.gid-locked {
+  opacity: 0.9;
+}
+.gid-row input[type="checkbox"] {
+  accent-color: var(--gid-accent);
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* Miniatura de imagen / video */
+.gid-thumb {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--gid-bg);
+  border: 1px solid var(--gid-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gid-muted);
+}
+.gid-thumb img,
+.gid-thumb video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  background: #0a0a0f;
+  pointer-events: none;
+}
+.gid-thumb-video video {
+  object-fit: cover;
+}
+.gid-thumb-badge {
+  position: absolute;
+  right: 3px;
+  bottom: 3px;
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.72);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.gid-thumb-badge svg {
+  width: 11px;
+  height: 11px;
+}
+.gid-thumb-fallback {
+  background: var(--gid-surface-2);
+  color: var(--gid-muted);
+}
+.gid-thumb-fallback svg {
+  width: 20px;
+  height: 20px;
+}
+
+.gid-row-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+  font-size: 12.5px;
+  min-width: 0;
+}
+.gid-row-meta {
+  font-size: 10px;
+  color: var(--gid-faint);
+  flex-shrink: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.gid-lock {
+  font-size: 13px;
+  flex-shrink: 0;
+  filter: grayscale(0);
+}
+
+/* ─── License section ─────────────────────────────────────────────────────── */
+
+.gid-license {
+  border-top: 1px solid var(--gid-border);
+  padding: 10px 12px 12px;
+  background: var(--gid-bg);
+}
+.gid-license-label {
+  font-size: 11px;
+  color: var(--gid-muted);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.gid-license-row {
+  display: flex;
+  gap: 6px;
+}
+.gid-license-row input {
+  flex: 1;
+  background: var(--gid-surface);
+  border: 1px solid var(--gid-border);
+  border-radius: 8px;
+  color: var(--gid-text);
+  padding: 8px 10px;
+  font-size: 12px;
+  font-family: ui-monospace, monospace;
+  letter-spacing: 0.04em;
+  outline: none;
+}
+.gid-license-row input:focus {
+  border-color: var(--gid-accent);
+  box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.25);
+}
+.gid-license-row button {
+  background: var(--gid-surface-2);
+  border: 1px solid var(--gid-border);
+  color: var(--gid-text);
+  border-radius: 8px;
+  padding: 0 12px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--gid-font);
+  white-space: nowrap;
+}
+.gid-license-row button:hover {
+  border-color: var(--gid-accent);
+}
+.gid-license-msg {
+  font-size: 11px;
+  margin-top: 6px;
+  min-height: 14px;
+  color: var(--gid-muted);
+}
+.gid-license-msg.ok {
+  color: var(--gid-success);
+}
+.gid-license-msg.err {
+  color: var(--gid-danger);
+}
+.gid-upgrade-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 8px;
+  font-size: 11px;
+  color: var(--gid-accent);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: var(--gid-font);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ─── Modal upsell ────────────────────────────────────────────────────────── */
+
+#gid-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483646;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  backdrop-filter: blur(4px);
+}
+#gid-modal-overlay.gid-hidden {
+  display: none;
+}
+.gid-modal {
+  width: 100%;
+  max-width: 380px;
+  background: var(--gid-surface);
+  border: 1px solid var(--gid-border);
+  border-radius: 18px;
+  box-shadow: var(--gid-shadow);
+  padding: 24px 22px 20px;
+  font-family: var(--gid-font);
+  color: var(--gid-text);
+  position: relative;
+  animation: gid-pop 0.2s ease;
+}
+@keyframes gid-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.gid-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  color: var(--gid-muted);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 6px;
+  line-height: 0;
+}
+.gid-modal-close:hover {
+  background: var(--gid-surface-2);
+  color: var(--gid-text);
+}
+.gid-modal-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.25), rgba(99, 102, 241, 0.2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gid-accent);
+  margin-bottom: 14px;
+}
+.gid-modal h2 {
+  margin: 0 0 6px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.gid-modal > p {
+  margin: 0 0 16px;
+  color: var(--gid-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.gid-benefits {
+  list-style: none;
+  margin: 0 0 18px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.gid-benefits li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+.gid-benefits li svg {
+  flex-shrink: 0;
+  color: var(--gid-success);
+  margin-top: 1px;
+}
+.gid-modal-cta {
+  width: 100%;
+  background: linear-gradient(135deg, var(--gid-accent), var(--gid-accent-2));
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: var(--gid-font);
+  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.35);
+  transition: filter 0.12s ease;
+}
+.gid-modal-cta:hover {
+  filter: brightness(1.08);
+}
+.gid-modal-sub {
+  text-align: center;
+  font-size: 11px;
+  color: var(--gid-faint);
+  margin: 12px 0 0;
+}
+
+/* Scrollbar sutil */
+#gid-list::-webkit-scrollbar {
+  width: 6px;
+}
+#gid-list::-webkit-scrollbar-thumb {
+  background: #3f3f50;
+  border-radius: 999px;
+}

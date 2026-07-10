@@ -1,0 +1,14 @@
+{
+  "name": "gid-license-worker",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Optional Lemon Squeezy webhook + license proxy for Grok Imagine Downloader",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "tail": "wrangler tail"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}

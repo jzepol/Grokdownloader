@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Grok Imagine Downloader</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">GID</div>
+      <div>
+        <h1>Grok Imagine Downloader</h1>
+        <p class="sub" id="plan-label">Cargando…</p>
+      </div>
+    </header>
+
+    <div class="card" id="status-card">
+      <p id="page-status">Comprobando pestaña…</p>
+    </div>
+
+    <div class="actions">
+      <button type="button" class="primary" id="btn-open-imagine">
+        Abrir grok.com/imagine/saved
+      </button>
+      <button type="button" class="secondary" id="btn-toggle-panel" disabled>
+        Mostrar panel en esta página
+      </button>
+    </div>
+
+    <ol class="steps">
+      <li>Andá a <strong>grok.com/imagine/saved</strong> (tus creaciones).</li>
+      <li>O abrí un post: <strong>/imagine/post/…</strong></li>
+      <li>Botón morado <strong>Media</strong> → elegí y descargá.</li>
+    </ol>
+
+    <p class="hint">
+      En <strong>/imagine</strong> (home) solo hay muestras de Grok: el addon
+      <em>no</em> las lista a propósito. Usá Saved o un post tuyo.
+    </p>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

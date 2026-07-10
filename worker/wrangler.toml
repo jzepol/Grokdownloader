@@ -1,0 +1,16 @@
+# OPCIONAL — la extensión no depende de este Worker por defecto.
+# Ver worker/README.md
+
+name = "gid-license"
+main = "src/index.js"
+compatibility_date = "2026-07-10"
+compatibility_flags = ["nodejs_compat"]
+
+[observability]
+enabled = true
+head_sampling_rate = 1
+
+# Opcional: solo si querés persistir webhooks
+# [[kv_namespaces]]
+# binding = "LICENSES"
+# id = "REEMPLAZAR_CON_KV_NAMESPACE_ID"

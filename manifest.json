@@ -1,0 +1,49 @@
+{
+  "manifest_version": 3,
+  "name": "Grok Imagine Downloader",
+  "version": "2.4.0",
+  "description": "Detecta y descarga videos e imágenes generados en Grok Imagine. Freemium: 5 imágenes + 5 videos gratis; PRO desbloquea todo.",
+  "permissions": ["downloads", "storage", "scripting"],
+  "host_permissions": [
+    "https://grok.com/*",
+    "https://*.grok.com/*",
+    "https://*.x.ai/*",
+    "https://assets.grok.com/*",
+    "https://assets.grokusercontent.com/*",
+    "https://*.grokusercontent.com/*",
+    "https://imagine-public.x.ai/*",
+    "https://api.lemonsqueezy.com/*",
+    "https://*.lemonsqueezy.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://grok.com/*", "https://*.grok.com/*"],
+      "js": ["license.js", "content.js"],
+      "css": ["panel.css"],
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["inject.js"],
+      "matches": ["https://grok.com/*", "https://*.grok.com/*"]
+    }
+  ],
+  "action": {
+    "default_title": "Grok Imagine Downloader — clic para ayuda",
+    "default_popup": "popup.html",
+    "default_icons": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
